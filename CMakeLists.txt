@@ -8,6 +8,14 @@ include(GNUInstallDirs)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+if (NOT DEFINED TIPI_TEAM)
+message(FATAL_ERROR "you need to define TIPI_TEAM")
+endif()
+
+if (NOT DEFINED TIPI_TEAM_ZURICH)
+message(FATAL_ERROR "you need to define TIPI_TEAM_ZURICH")
+endif()
+
 add_library(MathFunctionscbrt STATIC MathFunctionscbrt.cxx)
 
 target_include_directories(MathFunctionscbrt
