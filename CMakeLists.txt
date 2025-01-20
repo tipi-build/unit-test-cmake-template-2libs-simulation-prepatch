@@ -57,3 +57,28 @@ install(EXPORT MathFunctionsTargets
         NAMESPACE MathFunctions::
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/MathFunctions
 )
+
+
+add_library(MathFunctionsmultiplybytwo STATIC MathFunctionsmultiplybytwo.cxx)
+
+target_include_directories(MathFunctionsmultiplybytwo
+                           PUBLIC
+                           "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
+                           "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+)
+
+
+install(TARGETS MathFunctionsmultiplybytwo
+        EXPORT MathFunctionsmultiplybytwoTargets
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+
+install(FILES MathFunctionsmultiplybytwo.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(EXPORT MathFunctionsmultiplybytwoTargets
+        FILE MathFunctionsmultiplybytwoTargets.cmake
+        NAMESPACE MathFunctionsmultiplybytwo::
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/MathFunctionsmultiplybytwo
+)
